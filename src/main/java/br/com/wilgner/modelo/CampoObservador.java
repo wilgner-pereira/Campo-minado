@@ -1,5 +1,5 @@
 package br.com.wilgner.modelo;
 
 public interface CampoObservador {
-    public void eventoOcorreu(Campo campo, CampoEvento evento);
+     void eventoOcorreu(Campo campo, CampoEvento evento);
 }
