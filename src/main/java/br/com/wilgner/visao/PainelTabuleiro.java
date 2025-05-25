@@ -1,31 +1,32 @@
 package br.com.wilgner.visao;
 
-import br.com.wilgner.modelo.Tabuleiro;
+import br.com.wilgner.controle.TabuleiroController;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class PainelTabuleiro extends JPanel {
 
-    public PainelTabuleiro(Tabuleiro tabuleiro) {
 
-        setLayout(new GridLayout(tabuleiro.getLinhas(), tabuleiro.getColunas()));
+    public PainelTabuleiro(TabuleiroController controller) {
 
-        tabuleiro.paraCada(c -> add(new BotaoCampo(c)));
 
-        tabuleiro.registrarObservador(e -> {
+        setLayout(new GridLayout(controller.getTabuleiro().getLinhas(), controller.getTabuleiro().getColunas()));
 
+
+        controller.getTabuleiro().paraCada(c -> add(new BotaoCampo(c)));
+
+
+        controller.registrarObservador(e -> {
             SwingUtilities.invokeLater(() -> {
-                if(e.isGanhou()){
+                if (e.isGanhou()) {
                     JOptionPane.showMessageDialog(this, "Ganhou");
                 } else {
                     JOptionPane.showMessageDialog(this, "Perdeu");
                 }
 
-                tabuleiro.reiniciar();
+                controller.reiniciar();
             });
         });
-
-
     }
 }

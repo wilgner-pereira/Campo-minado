@@ -1,5 +1,6 @@
 package br.com.wilgner.visao;
 
+import br.com.wilgner.controle.TabuleiroController;
 import br.com.wilgner.modelo.Tabuleiro;
 
 import javax.swing.*;
@@ -7,8 +8,8 @@ import javax.swing.*;
 public class TelaPrincipal extends JFrame {
 
     public TelaPrincipal() {
-        Tabuleiro tabuleiro = new Tabuleiro(16,30,50);
-        PainelTabuleiro painelTabuleiro = new PainelTabuleiro(tabuleiro);
+        TabuleiroController controller = new TabuleiroController(15, 30, 50);
+        PainelTabuleiro painelTabuleiro = new PainelTabuleiro(controller);
 
         add(painelTabuleiro);
 
